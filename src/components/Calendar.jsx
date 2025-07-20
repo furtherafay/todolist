@@ -30,11 +30,17 @@ export const Calendar = () => {
 
   const handleChangeDate = (index) => {
     setSelectedIndex(index);
-    setDay(index);
-
+  
     const clickDiff = index - day;
-    setDate(date + clickDiff);
+  
+    const newDateObj = new Date(today);
+    newDateObj.setDate(date + clickDiff);
+  
+    setDate(newDateObj.getDate());
+    setMonth(newDateObj.getMonth());
+    setDay(newDateObj.getDay());
   };
+  
 
   return (
     <>
@@ -45,7 +51,7 @@ export const Calendar = () => {
             <div
               key={d}
               onClick={() => handleChangeDate(index)}
-              className={`p-2 cursor-pointer flex justify-center items-center w-[10%] h-full border border-black rounded-md
+              className={`select-none p-2 cursor-pointer flex justify-center items-center w-[10%] h-full border border-black rounded-md
               ${selectedIndex === index ? "bg-muted-foreground" : "hover:bg-muted-foreground"}
               `}
             >
