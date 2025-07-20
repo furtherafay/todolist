@@ -59,7 +59,7 @@ export const CalendarCard = () => {
 
   return (
     <>
-      <div className="flex flex-col ml-2 mr-2 mt-2 w-[90%] min-h-32 border border-black rounded-md">
+      <div className="p-2 flex flex-col ml-2 mr-2 mt-2 w-[90%] min-h-32 border border-black rounded-md">
         <div className="flex justify-between">
           <div className="flex flex-row relative">
             <h1 className="text-2xl font-mono font-bold ml-2">{getDate()}</h1>
