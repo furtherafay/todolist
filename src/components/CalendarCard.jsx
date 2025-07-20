@@ -80,7 +80,7 @@ export const CalendarCard = () => {
                     setCalendarIsOpen(false); // Optional: close after selection
                   }
                 }}
-                className="rounded-lg border ml-4 md:ml-50 absolute"
+                className="rounded-lg border mt-8 ml-4 md:ml-50 absolute"
               />
             )}
           </div>
