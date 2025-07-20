@@ -95,7 +95,7 @@ export const CalendarCard = () => {
             <div
               key={d}
               onClick={() => handleChangeDate(index)}
-              className={`select-none p-2 cursor-pointer flex justify-center items-center w-[10%] h-full border border-black rounded-md
+              className={`select-none p-4 cursor-pointer flex justify-center items-center w-[10%] h-full border border-black rounded-md
               ${
                 selectedIndex === index
                   ? "bg-muted-foreground"
