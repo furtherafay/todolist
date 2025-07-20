@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { Calendar as CalendarPicker } from "@/components/ui/calendar";
+import { Button } from "./ui/button";
 
 export const CalendarCard = () => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -32,6 +33,13 @@ export const CalendarCard = () => {
     setCalendarIsOpen(!calendarIsOpen);
   };
 
+  const handleDatetoToday = () => {
+    setDay(today.getDay());
+    setMonth(today.getMonth());
+    setDate(today.getDate());
+    setSelectedIndex(today.getDay());
+  };
+
   const getDate = () => {
     return `${days[day]}, ${months[month]} ${date}`;
   };
@@ -51,14 +59,37 @@ export const CalendarCard = () => {
 
   return (
     <>
-      <div className="flex flex-col ml-2 mr-2 mt-2 w-[90%] h-28 border border-black rounded-md">
-        <div className="flex">
-          <h1 className="text-2xl font-mono font-bold ml-2">{getDate()}</h1>
-          <CalendarIcon
-            onClick={handleCalendarOpen}
-            className="mt-1 ml-2"
-          ></CalendarIcon>
+      <div className="flex flex-col ml-2 mr-2 mt-2 w-[90%] h-32 border border-black rounded-md">
+        <div className="flex justify-between">
+          <div className="flex flex-row relative">
+            <h1 className="text-2xl font-mono font-bold ml-2">{getDate()}</h1>
+            <CalendarIcon
+              onClick={handleCalendarOpen}
+              className="mt-1 ml-2"
+            ></CalendarIcon>
+            {calendarIsOpen && (
+              <CalendarPicker
+                mode="single"
+                selected={new Date(2025, month, date)}
+                onSelect={(selected) => {
+                  if (selected) {
+                    setDate(selected.getDate());
+                    setMonth(selected.getMonth());
+                    setDay(selected.getDay());
+                    setSelectedIndex(selected.getDay());
+                    setCalendarIsOpen(false); // Optional: close after selection
+                  }
+                }}
+                className="rounded-lg border ml-50 absolute"
+              />
+            )}
+          </div>
+
+          <Button onClick={handleDatetoToday} className="m-2">
+            Today
+          </Button>
         </div>
+
         <div className="flex flex-row justify-around font-mono ml-2 mt-6">
           {days.map((d, index) => (
             <div
