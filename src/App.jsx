@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Calendar } from "./components/Calendar";
+import { CalendarCard } from "./components/CalendarCard";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       </header>
 
       <div className="flex justify-center items-center">
-        <Calendar></Calendar>
+        <CalendarCard></CalendarCard>
       </div>
     </>
   );
