@@ -38,15 +38,15 @@ export const Calendar = () => {
 
   return (
     <>
-      <div className="flex flex-col ml-2 mr-2 mt-2 w-[90%] h-26 border border-black rounded-md">
+      <div className="flex flex-col ml-2 mr-2 mt-2 w-[90%] h-28 border border-black rounded-md">
         <h1 className="text-2xl font-mono font-bold ml-2">{getDate()}</h1>
         <div className="flex flex-row justify-around font-mono ml-2 mt-6">
           {days.map((d, index) => (
             <div
               key={d}
               onClick={() => handleChangeDate(index)}
-              className={`cursor-pointer flex justify-center items-center w-[10%] h-full border border-black rounded-md
-              ${selectedIndex === index ? "bg-muted-foreground text-white" : "hover:bg-muted-foreground"}
+              className={`p-2 cursor-pointer flex justify-center items-center w-[10%] h-full border border-black rounded-md
+              ${selectedIndex === index ? "bg-muted-foreground" : "hover:bg-muted-foreground"}
               `}
             >
               {d}
