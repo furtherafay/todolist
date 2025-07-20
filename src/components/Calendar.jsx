@@ -22,7 +22,7 @@ export const Calendar = () => {
   const [month, setMonth] = useState(today.getMonth());
   const [date, setDate] = useState(today.getDate());
   const [day, setDay] = useState(today.getDay());
-  const [selectedIndex, setSelectedIndex] = useState();
+  const [selectedIndex, setSelectedIndex] = useState(today.getDay());
 
   const getDate = () => {
     return `${days[day]}, ${months[month]} ${date}`;
