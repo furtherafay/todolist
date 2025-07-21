@@ -4,7 +4,15 @@ import { Calendar as CalendarPicker } from "@/components/ui/calendar";
 import { Button } from "./ui/button";
 
 export const CalendarCard = () => {
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const [days, setDays] = useState([
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+  ]);
   const months = [
     "Jan",
     "Feb",
@@ -25,6 +33,8 @@ export const CalendarCard = () => {
   const [month, setMonth] = useState(today.getMonth());
   const [date, setDate] = useState(today.getDate());
   const [day, setDay] = useState(today.getDay());
+  const [currentDate, setCurrentDate] = useState(new Date());
+
   const [selectedIndex, setSelectedIndex] = useState(today.getDay());
 
   const [calendarIsOpen, setCalendarIsOpen] = useState(false);
@@ -71,6 +81,31 @@ export const CalendarCard = () => {
     setDate(newDateObj.getDate());
     setMonth(newDateObj.getMonth());
     setDay(newDateObj.getDay());
+  };
+
+  const handleLeftArrow = () => {
+    setDays((prev) => [
+      prev[prev.length - 1],
+      ...prev.slice(0, prev.length - 1),
+    ]);
+    setCurrentDate((prev) => {
+      const newDate = new Date(prev);
+      newDate.setDate(newDate.getDate() - 1);
+      setMonth(newDate.getMonth())
+      setDate(newDate.getDate())
+      return newDate;
+    });
+  };
+
+  const handleRightArrow = () => {
+    setDays((prev) => [...prev.slice(1), prev[0]]);
+    setCurrentDate((prev) => {
+      const newDate = new Date(prev);
+      newDate.setDate(newDate.getDate() + 1);
+      setMonth(newDate.getMonth())
+      setDate(newDate.getDate())
+      return newDate;
+    });
   };
 
   return (
@@ -125,8 +160,8 @@ export const CalendarCard = () => {
         </div>
 
         <div className="flex flex-row justify-between items-center mt-4 w-full h-8">
-          <ArrowLeft className="ml-8"></ArrowLeft>
-          <ArrowRight className="mr-8"></ArrowRight>
+          <ArrowLeft onClick={handleLeftArrow} className="ml-8"></ArrowLeft>
+          <ArrowRight onClick={handleRightArrow} className="mr-8"></ArrowRight>
         </div>
       </div>
     </>
