@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { Calendar as CalendarPicker } from "@/components/ui/calendar";
 import { Button } from "./ui/button";
@@ -6,18 +6,18 @@ import { Button } from "./ui/button";
 export const CalendarCard = () => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   const today = new Date();
@@ -28,6 +28,21 @@ export const CalendarCard = () => {
   const [selectedIndex, setSelectedIndex] = useState(today.getDay());
 
   const [calendarIsOpen, setCalendarIsOpen] = useState(false);
+
+  const calendarRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (calendarRef.current && !calendarRef.current.contains(event.target))
+        setCalendarIsOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleCalendarOpen = () => {
     setCalendarIsOpen(!calendarIsOpen);
@@ -62,7 +77,7 @@ export const CalendarCard = () => {
     <>
       <div className="p-2 shadow-xl flex flex-col ml-2 mr-2 mt-2 w-[90%] min-h-32 rounded-md">
         <div className="flex justify-between">
-          <div className="flex flex-row relative">
+          <div ref={calendarRef} className="flex flex-row relative">
             <h1 className="text-2xl font-mono font-bold ml-2">{getDate()}</h1>
             <CalendarIcon
               onClick={handleCalendarOpen}
