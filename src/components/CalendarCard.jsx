@@ -91,8 +91,8 @@ export const CalendarCard = () => {
     setCurrentDate((prev) => {
       const newDate = new Date(prev);
       newDate.setDate(newDate.getDate() - 1);
-      setMonth(newDate.getMonth())
-      setDate(newDate.getDate())
+      setMonth(newDate.getMonth());
+      setDate(newDate.getDate());
       return newDate;
     });
   };
@@ -102,8 +102,8 @@ export const CalendarCard = () => {
     setCurrentDate((prev) => {
       const newDate = new Date(prev);
       newDate.setDate(newDate.getDate() + 1);
-      setMonth(newDate.getMonth())
-      setDate(newDate.getDate())
+      setMonth(newDate.getMonth());
+      setDate(newDate.getDate());
       return newDate;
     });
   };
@@ -129,6 +129,10 @@ export const CalendarCard = () => {
                     setDay(selected.getDay());
                     setSelectedIndex(selected.getDay());
                     setCalendarIsOpen(false);
+
+                    currentDate.setDate(selected.getDate())
+                    currentDate.setMonth(selected.getMonth());
+                    currentDate.setDay(selected.getDay());
                   }
                 }}
                 className="rounded-lg border mt-8 md:mt-0 ml-4 md:ml-50 absolute"
