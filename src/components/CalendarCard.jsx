@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Calendar as CalendarIcon } from "lucide-react";
+import { Calendar as CalendarIcon, ArrowLeft, ArrowRight } from "lucide-react";
 import { Calendar as CalendarPicker } from "@/components/ui/calendar";
 import { Button } from "./ui/button";
 
@@ -93,7 +93,7 @@ export const CalendarCard = () => {
                     setMonth(selected.getMonth());
                     setDay(selected.getDay());
                     setSelectedIndex(selected.getDay());
-                    setCalendarIsOpen(false); // Optional: close after selection
+                    setCalendarIsOpen(false);
                   }
                 }}
                 className="rounded-lg border mt-8 md:mt-0 ml-4 md:ml-50 absolute"
@@ -122,6 +122,11 @@ export const CalendarCard = () => {
               {d}
             </div>
           ))}
+        </div>
+
+        <div className="flex flex-row justify-between items-center mt-4 w-full h-8">
+          <ArrowLeft className="ml-8"></ArrowLeft>
+          <ArrowRight className="mr-8"></ArrowRight>
         </div>
       </div>
     </>
