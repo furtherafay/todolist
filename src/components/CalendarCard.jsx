@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { Calendar as CalendarPicker } from "@/components/ui/calendar";
 import { Button } from "./ui/button";
@@ -60,7 +60,7 @@ export const CalendarCard = () => {
 
   return (
     <>
-      <div className="p-2 flex flex-col ml-2 mr-2 mt-2 w-[90%] min-h-32 border border-black rounded-md">
+      <div className="p-2 shadow-xl flex flex-col ml-2 mr-2 mt-2 w-[90%] min-h-32 rounded-md">
         <div className="flex justify-between">
           <div className="flex flex-row relative">
             <h1 className="text-2xl font-mono font-bold ml-2">{getDate()}</h1>
@@ -86,7 +86,7 @@ export const CalendarCard = () => {
             )}
           </div>
 
-          <Button onClick={handleDatetoToday} className="m-2">
+          <Button onClick={handleDatetoToday} className="shadow-xl m-2">
             Today
           </Button>
         </div>
@@ -96,7 +96,7 @@ export const CalendarCard = () => {
             <div
               key={d}
               onClick={() => handleChangeDate(index)}
-              className={`select-none p-4 cursor-pointer flex justify-center items-center w-[10%] h-full border border-black rounded-md
+              className={`md:text-2xl font-bold shadow-xl select-none p-4 cursor-pointer flex justify-center items-center w-[10%] h-full rounded-md
               ${
                 selectedIndex === index
                   ? "bg-muted-foreground"
