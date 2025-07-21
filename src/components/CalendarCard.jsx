@@ -50,6 +50,7 @@ export const CalendarCard = () => {
     const clickDiff = index - day;
 
     const newDateObj = new Date(today);
+    newDateObj.setMonth(month);
     newDateObj.setDate(date + clickDiff);
 
     setDate(newDateObj.getDate());
