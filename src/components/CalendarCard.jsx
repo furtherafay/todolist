@@ -59,6 +59,9 @@ export const CalendarCard = () => {
   };
 
   const handleDatetoToday = () => {
+
+    setCurrentDate(today);
+
     setDay(today.getDay());
     setMonth(today.getMonth());
     setDate(today.getDate());
@@ -130,9 +133,7 @@ export const CalendarCard = () => {
                     setSelectedIndex(selected.getDay());
                     setCalendarIsOpen(false);
 
-                    currentDate.setDate(selected.getDate())
-                    currentDate.setMonth(selected.getMonth());
-                    currentDate.setDay(selected.getDay());
+                    setCurrentDate(selected)
                   }
                 }}
                 className="rounded-lg border mt-8 md:mt-0 ml-4 md:ml-50 absolute"
@@ -164,8 +165,8 @@ export const CalendarCard = () => {
         </div>
 
         <div className="flex flex-row justify-between items-center mt-4 w-full h-8">
-          <ArrowLeft onClick={handleLeftArrow} className="ml-8"></ArrowLeft>
-          <ArrowRight onClick={handleRightArrow} className="mr-8"></ArrowRight>
+          <ArrowLeft onClick={handleLeftArrow} className="ml-4 md:ml-8"></ArrowLeft>
+          <ArrowRight onClick={handleRightArrow} className="ml-4 md:mr-8"></ArrowRight>
         </div>
       </div>
     </>
