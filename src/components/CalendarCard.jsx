@@ -3,16 +3,18 @@ import { Calendar as CalendarIcon, ArrowLeft, ArrowRight } from "lucide-react";
 import { Calendar as CalendarPicker } from "@/components/ui/calendar";
 import { Button } from "./ui/button";
 
+const initialDays = [
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+];
+
 export const CalendarCard = () => {
-  const [days, setDays] = useState([
-    "Sun",
-    "Mon",
-    "Tue",
-    "Wed",
-    "Thu",
-    "Fri",
-    "Sat",
-  ]);
+  const [days, setDays] = useState(initialDays);
   const months = [
     "Jan",
     "Feb",
@@ -59,13 +61,14 @@ export const CalendarCard = () => {
   };
 
   const handleDatetoToday = () => {
+    const todayDate = new Date();
+    setCurrentDate(todayDate);
 
-    setCurrentDate(today);
-
-    setDay(today.getDay());
-    setMonth(today.getMonth());
-    setDate(today.getDate());
-    setSelectedIndex(today.getDay());
+    setDay(todayDate.getDay());
+    setMonth(todayDate.getMonth());
+    setDate(todayDate.getDate());
+    setSelectedIndex(todayDate.getDay());
+    setDays([...initialDays]);
   };
 
   const getDate = () => {
@@ -116,7 +119,7 @@ export const CalendarCard = () => {
       <div className="p-2 shadow-xl flex flex-col ml-2 mr-2 mt-2 w-[90%] min-h-32 rounded-md">
         <div className="flex justify-between">
           <div ref={calendarRef} className="flex flex-row relative">
-            <h1 className="text-2xl font-mono font-bold ml-2">{getDate()}</h1>
+            <h1 className="select-none text-2xl font-mono font-bold ml-2">{getDate()}</h1>
             <CalendarIcon
               onClick={handleCalendarOpen}
               className="mt-1 ml-2"
@@ -141,7 +144,7 @@ export const CalendarCard = () => {
             )}
           </div>
 
-          <Button onClick={handleDatetoToday} className="shadow-xl m-2">
+          <Button onClick={handleDatetoToday} className="pointer-cursor select-none shadow-xl m-2">
             Today
           </Button>
         </div>
