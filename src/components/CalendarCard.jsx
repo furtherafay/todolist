@@ -130,6 +130,7 @@ export const CalendarCard = () => {
                 selected={new Date(2025, month, date)}
                 onSelect={(selected) => {
                   if (selected) {
+                    setDays([...initialDays]);
                     setDate(selected.getDate());
                     setMonth(selected.getMonth());
                     setDay(selected.getDay());
