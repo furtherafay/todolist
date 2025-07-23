@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CalendarCard } from "./components/CalendarCard";
+import { AddTask } from "./components/AddTask";
 
 function App() {
   return (
@@ -11,6 +12,10 @@ function App() {
 
       <div className="flex justify-center items-center">
         <CalendarCard></CalendarCard>
+      </div>
+
+      <div className="flex justify-center items-center">
+        <AddTask></AddTask>
       </div>
     </>
   );

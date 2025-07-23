@@ -3,15 +3,7 @@ import { Calendar as CalendarIcon, ArrowLeft, ArrowRight } from "lucide-react";
 import { Calendar as CalendarPicker } from "@/components/ui/calendar";
 import { Button } from "./ui/button";
 
-const initialDays = [
-  "Sun",
-  "Mon",
-  "Tue",
-  "Wed",
-  "Thu",
-  "Fri",
-  "Sat",
-];
+const initialDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const CalendarCard = () => {
   const [days, setDays] = useState(initialDays);
@@ -119,7 +111,9 @@ export const CalendarCard = () => {
       <div className="p-2 shadow-xl flex flex-col ml-2 mr-2 mt-2 w-[90%] min-h-32 rounded-md">
         <div className="flex justify-between">
           <div ref={calendarRef} className="flex flex-row relative">
-            <h1 className="select-none text-2xl font-mono font-bold ml-2">{getDate()}</h1>
+            <h1 className="select-none text-2xl font-mono font-bold ml-2">
+              {getDate()}
+            </h1>
             <CalendarIcon
               onClick={handleCalendarOpen}
               className="mt-1 ml-2"
@@ -137,7 +131,7 @@ export const CalendarCard = () => {
                     setSelectedIndex(selected.getDay());
                     setCalendarIsOpen(false);
 
-                    setCurrentDate(selected)
+                    setCurrentDate(selected);
                   }
                 }}
                 className="rounded-lg border mt-8 md:mt-0 ml-4 md:ml-50 absolute"
@@ -145,7 +139,10 @@ export const CalendarCard = () => {
             )}
           </div>
 
-          <Button onClick={handleDatetoToday} className="pointer-cursor select-none shadow-xl m-2">
+          <Button
+            onClick={handleDatetoToday}
+            className="pointer-cursor select-none shadow-xl m-2"
+          >
             Today
           </Button>
         </div>
@@ -169,8 +166,14 @@ export const CalendarCard = () => {
         </div>
 
         <div className="flex flex-row justify-between items-center mt-4 w-full h-8">
-          <ArrowLeft onClick={handleLeftArrow} className="ml-4 md:ml-8"></ArrowLeft>
-          <ArrowRight onClick={handleRightArrow} className="ml-4 md:mr-8"></ArrowRight>
+          <ArrowLeft
+            onClick={handleLeftArrow}
+            className="ml-4 md:ml-8"
+          ></ArrowLeft>
+          <ArrowRight
+            onClick={handleRightArrow}
+            className="ml-4 md:mr-8"
+          ></ArrowRight>
         </div>
       </div>
     </>
